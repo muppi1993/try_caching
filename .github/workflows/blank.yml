@@ -44,3 +44,6 @@ jobs:
         run: |
           wget https://sketchdb.blob.core.windows.net/public-dbs/smitis_database.tar.gz
           tar -xf smitis_database.tar.gz
+          
+      - name: check download
+        run: ls
