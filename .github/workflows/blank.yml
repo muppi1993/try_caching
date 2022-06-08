@@ -46,4 +46,6 @@ jobs:
           tar -xf smitis_database.tar.gz
           
       - name: check download
-        run: ls
+        run: |
+          cd main
+          ls
