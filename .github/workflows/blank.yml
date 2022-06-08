@@ -23,13 +23,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with: 
+          path: main
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: create new dir
+        working-directory: ./main
+        run: mkdir storage
+          
+      - name: Cache database
+        id: cache-db
+        uses: actions/cache@v3
+        with:
+          path: ./main/storage
+          key: GPS_v4
+      - name: Download and extract GPS database
+        if: steps.cache-db.outputs.cache-hit == 'false'
+        working-directory: ./main/storage
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          wget https://sketchdb.blob.core.windows.net/public-dbs/smitis_database.tar.gz
+          tar -xf GPS_v4_full.tar.bz2
