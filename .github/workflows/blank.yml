@@ -47,5 +47,5 @@ jobs:
           
       - name: check download
         run: |
-          cd main
+          cd main/storage
           ls
