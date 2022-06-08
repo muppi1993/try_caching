@@ -36,14 +36,16 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./main/storage
-          key: GPS_v4.3
+          key: GPS_v4.4
           
-      - name: Download and extract GPS database
+      - name: Download GPS database
         if: steps.cache-db.outputs.cache-hit != 'true'
         working-directory: ./main/storage
-        run: |
-          wget https://sketchdb.blob.core.windows.net/public-dbs/smitis_database.tar.gz
-          tar -xf smitis_database.tar.gz
+        run: wget https://sketchdb.blob.core.windows.net/public-dbs/GPS_v4_full.tar.bz2
+          
+      - name: extract db
+        working-directory: ./main/storage
+        run: tar -xf GPS_v4_full.tar.bz2
           
       - name: check download
         run: |
