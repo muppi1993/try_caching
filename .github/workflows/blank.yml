@@ -37,7 +37,9 @@ jobs:
         with:
           path: ./main/storage/GPS_v4
           key: GPS_v4.5
-          
+      - name: display available data
+        working-directory: ./main
+        run: ls -lR
       - name: Download GPS database
         if: steps.cache-db.outputs.cache-hit != 'true'
         working-directory: ./main/storage
