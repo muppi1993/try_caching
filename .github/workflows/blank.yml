@@ -44,6 +44,7 @@ jobs:
         run: wget https://sketchdb.blob.core.windows.net/public-dbs/GPS_v4_full.tar.bz2
           
       - name: extract database
+        working-directory: ./main/storage
         run: tar -xf GPS_v4_full.tar.bz2
           
       - name: display available data
