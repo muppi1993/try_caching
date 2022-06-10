@@ -44,7 +44,7 @@ jobs:
           
       - name: extract database into ./main/storage 
         working-directory: .
-        run: tar -xf GPS_v4_full.tar.bz2 --directory .main/storage
+        run: tar -xf GPS_v4_full.tar.bz2 --directory main/storage
           
       - name: display available data
         working-directory: ./main
